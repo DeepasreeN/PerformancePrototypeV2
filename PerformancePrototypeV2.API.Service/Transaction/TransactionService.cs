@@ -23,15 +23,24 @@ namespace PerformancePrototypeV2.API.Service.Transaction
                 return transaction;
             }
 
-            public async Task<TransactionDTO> GetTransactionData(int pagesize, int pagenumber)
+            public async Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber)
             {
-                var transactionRecords = await _transactionRepository.GetPagedTransactionData(pagesize, pagenumber);
+                var transactionRecords = await _transactionRepository.GetPagedTransactionData(pagesize, skipnumber);
                 var recordCount = await _transactionRepository.GetTotalRecordCount();
 
                 var transactions = new TransactionDTO() { totalcount=recordCount,Transactiondetails=transactionRecords};
                 return transactions;
 
             }
+
+        public async Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber, string sortField, string sortOrder)
+        {
+            var transactionRecords = await _transactionRepository.GetPagedTransactionData(pagesize, skipnumber, sortField, sortOrder);
+            var recordCount = await _transactionRepository.GetTotalRecordCount();
+
+            var transactions = new TransactionDTO() { totalcount = recordCount, Transactiondetails = transactionRecords };
+            return transactions;
         }
+    }
     
 }

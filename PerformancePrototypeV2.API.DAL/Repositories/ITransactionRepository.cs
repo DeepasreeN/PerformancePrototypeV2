@@ -9,7 +9,9 @@ namespace PerformancePrototypeV2.API.DAL.Repositories
 {
     public interface ITransactionRepository : IRepository<TransactionDetail>
     {
-       Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount);
-       Task<int> GetTotalRecordCount();
+        Task<int> GetTotalRecordCount();
+        Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount);
+        Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount,string sortfield,string sortorder);
+
     }
 }

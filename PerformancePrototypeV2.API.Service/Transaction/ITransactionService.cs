@@ -12,5 +12,6 @@ namespace PerformancePrototypeV2.API.Service.Transaction
     {
         Task<IEnumerable<TransactionDetail>> GetAllTransactionData();
         Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber);
+        Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber, string sortField , string sortOrder);
     }
 }

@@ -42,10 +42,10 @@ namespace PerformancePrototypeV2.API.Controllers
         }
 
         [HttpGet("page")]
-        public async Task<APIResponse<TransactionDTO>> GetByPage(int pageSize,int skipNumber=0)
+        public async Task<APIResponse<TransactionDTO>> GetByPage(int pageSize,int skipNumber=0,string sortField="Id",string sortOrder="asc")
         {
 
-            var data = await _transactionService.GetTransactionData(pageSize, skipNumber);
+            var data = await _transactionService.GetTransactionData(pageSize, skipNumber,sortField,sortOrder);
             if (data == null)
             {
                 return new APIResponse<TransactionDTO>

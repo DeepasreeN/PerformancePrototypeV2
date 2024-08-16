@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PerformancePrototypeV2.API.DAL;
 using PerformancePrototypeV2.API.DAL.Model;
-using PerformancePrototypeV2.API.DAL.Repositories;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
+using System.Linq.Dynamic.Core;
 
 namespace PerformancePrototypeV2.API.DAL.Repositories
 {
@@ -14,7 +11,11 @@ namespace PerformancePrototypeV2.API.DAL.Repositories
         {
             _context = context;
         }
-
+        public async Task<int> GetTotalRecordCount()
+        {
+            var count = await _context.TransactionDetails.CountAsync();
+            return count;
+        }
         public async Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount)
         {
             var transactiondata = await _context.TransactionDetails
@@ -25,10 +26,16 @@ namespace PerformancePrototypeV2.API.DAL.Repositories
             return transactiondata;
         }
 
-        public async Task<int> GetTotalRecordCount()
+        public async Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount, string sortfield, string sortorder)
         {
-            var count = await _context.TransactionDetails.CountAsync();
-            return count;
+            
+            var transactiondata = await _context.TransactionDetails
+                            .OrderBy($"{sortfield} {sortorder}")
+                            .Skip(skipRecordCount)
+                            .Take(pageSize)
+                            .ToListAsync();
+            return transactiondata;
         }
+
     }
 }

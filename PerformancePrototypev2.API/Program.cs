@@ -3,7 +3,7 @@ using PerformancePrototypev2.API.Middleware;
 using PerformancePrototypeV2.API.DAL;
 using PerformancePrototypeV2.API.DAL.Repositories;
 using PerformancePrototypeV2.API.Service.Transaction;
-//11
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("SqlConnection");

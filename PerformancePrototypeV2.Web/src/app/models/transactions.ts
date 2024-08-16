@@ -17,3 +17,10 @@ export interface Transaction {
    transactions:Transaction[]
     total :number;
   }
+
+  export interface TransactionRequest{
+    first:number;
+    pagesize :number;
+    sortField:string |string[]
+    sortOrder:number
+   }

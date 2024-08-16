@@ -2,25 +2,31 @@
     <p-table [value]="transactions" 
     [paginator]="true"
     [rows]="5"
+    [first]="currentSkipCount"
     [lazy]="true"
     (onLazyLoad) ="loadTransactions($event)"
     [totalRecords]="totalRecords"
-    [rowsPerPageOptions]="rowsPerPageOptions"
-    [loading]="loading">
+    [showCurrentPageReport]="true"
+    paginatorDropdownAppendTo="body"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="rowsPerPageOptions"    
+    [loading]="loading"
+    [tableStyle]="{'font-size': '0.8em' }"
+    sortMode="multiple" >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="id" style="width:8%">ID<p-sortIcon field="id"/></th>
-            <th pSortableColumn="date" style="width:8%">Date<p-sortIcon field="date"/></th>
-            <th pSortableColumn="time" style="width:8%">Time<p-sortIcon field="time"/></th>
-            <th pSortableColumn="quantity"style="width:8%">Quantity<p-sortIcon field="quantity"/></th>
-            <th pSortableColumn="storeId" style="width:8%">StoreId<p-sortIcon field="storeId"/></th>
-            <th pSortableColumn="storeLocation" style="width:8%">StoreLocation<p-sortIcon field="storeLocation"/></th>
-            <th pSortableColumn="productId" style="width:8%">ProductId<p-sortIcon field="productId"/></th>
-            <th pSortableColumn="unitPrice" style="width:8%">UnitPrice<p-sortIcon field="unitPrice"/></th>
-            <th pSortableColumn="productCategory" style="width:8%">ProductCategory<p-sortIcon field="productCategory"/></th>
-            <th pSortableColumn="productType" style="width:8%">ProductType<p-sortIcon field="productType"/></th>
-            <th pSortableColumn="productDetail"style="width:8%">ProductDetail<p-sortIcon field="productDetail"/></th>
-            <th pSortableColumn="month" style="width:8%">Month<p-sortIcon field="month"/></th>
+            <th pSortableColumn="id" style="width:5%">ID<p-sortIcon field="id"/></th>
+            <th pSortableColumn="date" style="width:7%">Date<p-sortIcon field="date"/></th>
+            <th pSortableColumn="time" style="width:7%">Time<p-sortIcon field="time"/></th>
+            <th pSortableColumn="quantity"style="width:7%">Quantity<p-sortIcon field="quantity"/></th>
+            <th pSortableColumn="storeId" style="width:7%">StoreId<p-sortIcon field="storeId"/></th>
+            <th pSortableColumn="storeLocation" style="width:9%">StoreLocation<p-sortIcon field="storeLocation"/></th>
+            <th pSortableColumn="productId" style="width:7%">ProductId<p-sortIcon field="productId"/></th>
+            <th pSortableColumn="unitPrice" style="width:7%">UnitPrice<p-sortIcon field="unitPrice"/></th>
+            <th pSortableColumn="productCategory" style="width:10%">ProductCategory<p-sortIcon field="productCategory"/></th>
+            <th pSortableColumn="productType" style="width:9%">ProductType<p-sortIcon field="productType"/></th>
+            <th pSortableColumn="productDetail"style="width:9%">ProductDetail<p-sortIcon field="productDetail"/></th>
+            <th pSortableColumn="month" style="width:6%">Month<p-sortIcon field="month"/></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-transaction>
