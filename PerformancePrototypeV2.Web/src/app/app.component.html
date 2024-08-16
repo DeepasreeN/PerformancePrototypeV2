@@ -1,0 +1,6 @@
+<h1>{{title}}</h1>
+<button (click)="toggleComponent()">
+  {{ showComponent ? 'Hide' : 'Show' }}  Transactions</button>
+<div *ngIf="showComponent">
+  <app-transaction></app-transaction>
+</div>
