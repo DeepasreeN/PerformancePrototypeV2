@@ -24,21 +24,12 @@ namespace PerformancePrototypeV2.API.Controllers
             var data = await _transactionService.GetAllTransactionData();
             if (data == null)
             {
-                return new APIResponse<IEnumerable<TransactionDetail>>
-                {
-                    Success = false,
-                    Message = "Transaction not found",
-                    Data = null
-                };
+                return new APIResponse<IEnumerable<TransactionDetail>>(System.Net.HttpStatusCode.NotFound, "Transaction not found.", null);
+               
             }
 
-            return new APIResponse<IEnumerable<TransactionDetail>>
-            {
-                Success = true,
-                Message = "Transactions retrieved successfully",
-                Data = data
-            };
-
+            return new APIResponse<IEnumerable<TransactionDetail>>(data, "Transactions retrieved successfully");
+           
         }
 
         [HttpGet("page")]
@@ -48,44 +39,25 @@ namespace PerformancePrototypeV2.API.Controllers
             var data = await _transactionService.GetTransactionData(pageSize, skipNumber,sortField,sortOrder);
             if (data == null)
             {
-                return new APIResponse<TransactionDTO>
-                {
-                    Success = false,
-                    Message = "Transaction not found",
-                    Data = null
-                };
+                return new APIResponse<TransactionDTO>(System.Net.HttpStatusCode.NotFound, "Transaction not found.", null);
             }
 
-            return new APIResponse<TransactionDTO>
-            {
-                Success = true,
-                Message = "Transactions retrieved successfully",
-                Data = data
-            };
-
+            return new APIResponse<TransactionDTO>(data, "Transactions retrieved successfully");
+          
         }
         [HttpGet("count")]
-        public  APIResponse<int> GetTotalCount()
+        public async Task<APIResponse<int>> GetTotalCount()
         {
-
-            var data = 100;
+            
+            var data = await _transactionService.GetTransactionCount();
             if (data == 0)
             {
-                return new APIResponse<int>
-                {
-                    Success = false,
-                    Message = "Transaction not found",
-                    Data = data
-                };
+                return new APIResponse<int>(System.Net.HttpStatusCode.NotFound, "Transaction not found.", null);
+               
             }
 
-            return new APIResponse<int>
-            {
-                Success = true,
-                Message = "Transactions retrieved successfully",
-                Data = data
-            };
-
+            return new APIResponse<int>(data, "Transactions retrieved successfully");
+         
         }
 
     }

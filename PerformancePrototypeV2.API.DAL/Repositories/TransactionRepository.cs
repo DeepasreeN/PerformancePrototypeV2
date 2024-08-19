@@ -28,7 +28,7 @@ namespace PerformancePrototypeV2.API.DAL.Repositories
 
         public async Task<List<TransactionDetail>> GetPagedTransactionData(int pageSize, int skipRecordCount, string sortfield, string sortorder)
         {
-            
+   
             var transactiondata = await _context.TransactionDetails
                             .OrderBy($"{sortfield} {sortorder}")
                             .Skip(skipRecordCount)

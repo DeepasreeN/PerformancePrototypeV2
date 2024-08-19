@@ -20,6 +20,7 @@ export class TransactionComponent{
     }
 
     loadTransactions($event:TableLazyLoadEvent) { 
+        console.log($event);
         this.loading=true;
         this.transactionservice.getTransactionsPerPage($event.rows|| 5,$event.first||0,$event.sortField|| '',$event.sortOrder|| 1).subscribe({
             next:(response) => {

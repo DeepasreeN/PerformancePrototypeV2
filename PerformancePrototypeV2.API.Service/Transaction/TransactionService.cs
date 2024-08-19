@@ -22,7 +22,11 @@ namespace PerformancePrototypeV2.API.Service.Transaction
                 //var transactionData = transaction.Take(10);
                 return transaction;
             }
-
+            public async Task<int> GetTransactionCount()
+        {
+            var recordCount = await _transactionRepository.GetTotalRecordCount();
+            return recordCount;
+        }
             public async Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber)
             {
                 var transactionRecords = await _transactionRepository.GetPagedTransactionData(pagesize, skipnumber);
@@ -32,8 +36,7 @@ namespace PerformancePrototypeV2.API.Service.Transaction
                 return transactions;
 
             }
-
-        public async Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber, string sortField, string sortOrder)
+            public async Task<TransactionDTO> GetTransactionData(int pagesize, int skipnumber, string sortField, string sortOrder)
         {
             var transactionRecords = await _transactionRepository.GetPagedTransactionData(pagesize, skipnumber, sortField, sortOrder);
             var recordCount = await _transactionRepository.GetTotalRecordCount();
