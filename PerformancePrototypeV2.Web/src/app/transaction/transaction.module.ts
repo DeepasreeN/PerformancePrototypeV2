@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TransactionComponent } from './transaction.component';
 import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../global/auth.interceptor';
 
 import { TableModule } from 'primeng/table';
 
@@ -17,7 +19,7 @@ import { TableModule } from 'primeng/table';
     TableModule,
     BrowserAnimationsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(),{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   exports: [
     TransactionComponent
   ]
