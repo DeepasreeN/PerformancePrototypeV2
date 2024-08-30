@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Performance Prototype APP V2';
   showComponent:boolean = false;
   toggleComponent(){
       this.showComponent = !this.showComponent;

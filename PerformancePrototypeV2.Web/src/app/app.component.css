@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  app-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .content {
+    flex: 1;
+    margin-top: 60px; /* Adjust this value based on header height */
+    margin-bottom: 40px; /* Adjust this value based on footer height */
+    overflow-y: auto;
+    padding: 20px; /* Optional: Add padding to the content area */
+  }
+  
+  body {
+    padding-top: 60px; /* Adjust this value based on header height */
+    padding-bottom: 40px; /* Adjust this value based on footer height */
+  }
+  
