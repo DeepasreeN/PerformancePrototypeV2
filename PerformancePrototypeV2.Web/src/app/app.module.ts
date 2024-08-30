@@ -1,27 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TransactionComponent } from './transaction/transaction.component';
-import { provideHttpClient } from '@angular/common/http';
 
-import { TableModule } from 'primeng/table';
-
+import { TransactionModule } from './transaction/transaction.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TransactionComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TableModule,
-    BrowserAnimationsModule
+    TransactionModule
   ],
-  providers: [provideHttpClient()],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
