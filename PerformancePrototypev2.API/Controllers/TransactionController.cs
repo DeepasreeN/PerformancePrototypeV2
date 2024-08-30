@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PerformancePrototypev2.API.Common;
 using PerformancePrototypeV2.API.DAL.Model;
 using PerformancePrototypeV2.API.Service.DTOs;
@@ -8,6 +9,7 @@ namespace PerformancePrototypeV2.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;
