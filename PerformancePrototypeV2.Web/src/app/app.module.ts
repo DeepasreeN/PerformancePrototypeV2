@@ -7,15 +7,15 @@ import { AppComponent } from './app.component';
 import { TransactionModule } from './transaction/transaction.module';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './global/auth.interceptor';
+import { LoginModule } from './login/login.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -23,6 +23,7 @@ import { AuthInterceptor } from './global/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    LoginModule,
     TransactionModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

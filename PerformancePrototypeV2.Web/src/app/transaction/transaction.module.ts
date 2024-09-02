@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../global/auth.interceptor';
 
 import { TableModule } from 'primeng/table';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TableModule } from 'primeng/table';
   imports: [
     BrowserModule,
     TableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [provideHttpClient(),{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   exports: [

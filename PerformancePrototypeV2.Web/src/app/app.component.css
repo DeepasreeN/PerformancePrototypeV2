@@ -24,7 +24,6 @@ html, body {
     margin-top: 60px; /* Adjust this value based on header height */
     margin-bottom: 40px; /* Adjust this value based on footer height */
     overflow-y: auto;
-    padding: 20px; /* Optional: Add padding to the content area */
   }
   
   body {
