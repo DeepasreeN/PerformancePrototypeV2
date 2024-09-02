@@ -22,12 +22,13 @@ namespace PerformancePrototypeV2.API.Service.Login
 
         public string Authenticate(LoginDTO loginModel)
         {
-            // validate the user's credentials against a database here -- Pending
+            // 1. validate the user's credentials against a database here -- Pending
+            // 2. Include Hashing logic
 
             // hardcoded check.
             if (loginModel.Email == "user@example.com" && loginModel.Password == "password")
             {
-                // Generate a JWT token
+                
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
                 var tokenDescriptor = new SecurityTokenDescriptor

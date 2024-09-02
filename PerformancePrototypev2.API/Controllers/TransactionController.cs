@@ -8,8 +8,8 @@ using PerformancePrototypeV2.API.Service.Transaction;
 namespace PerformancePrototypeV2.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-   // [Authorize]
+    [ApiController]  
+    // [Authorize]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;

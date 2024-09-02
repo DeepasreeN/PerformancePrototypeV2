@@ -28,5 +28,16 @@ namespace PerformancePrototypev2.API.Controllers
 
             return Ok(new { Token = token });
         }
+
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] LoginDTO loginModel)
+        {
+            return BadRequest(ModelState);
+        }
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            return BadRequest(ModelState);
+        }
     }
 }
