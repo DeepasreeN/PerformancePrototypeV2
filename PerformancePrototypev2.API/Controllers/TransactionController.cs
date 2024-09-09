@@ -4,6 +4,7 @@ using PerformancePrototypev2.API.Common;
 using PerformancePrototypeV2.API.DAL.Model;
 using PerformancePrototypeV2.API.Service.DTOs;
 using PerformancePrototypeV2.API.Service.Transaction;
+using System.IO;
 
 namespace PerformancePrototypeV2.API.Controllers
 {
@@ -60,6 +61,20 @@ namespace PerformancePrototypeV2.API.Controllers
 
             return new APIResponse<int>(data, "Transactions retrieved successfully");
          
+        }
+        [HttpGet("downloadTransactions")]
+        public async Task<IActionResult> DownloadTransactionCsv()
+        {
+            var data = await _transactionService.DownloadTransactiondata();
+            var fileName = "sample.csv";
+            
+            if (data == null)
+            {
+                return null;
+
+            }
+
+            return File(data, "text/csv", fileName);
         }
 
     }
