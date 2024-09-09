@@ -21,8 +21,8 @@ html, body {
   
   .content {
     flex: 1;
-    margin-top: 60px; /* Adjust this value based on header height */
-    margin-bottom: 40px; /* Adjust this value based on footer height */
+    margin-top: 80px; /* Adjust this value based on header height */
+    margin-bottom: 20px; /* Adjust this value based on footer height */
     overflow-y: auto;
   }
   

@@ -2,3 +2,8 @@
     text-align: center;
     font-size: 0.8em;
   }
+
+  .align-right {
+    text-align: right;
+  }
+  

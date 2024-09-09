@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../global/auth.interceptor';
 
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -18,6 +19,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     BrowserModule,
     TableModule,
+    ButtonModule,
     BrowserAnimationsModule,
     SharedModule
   ],

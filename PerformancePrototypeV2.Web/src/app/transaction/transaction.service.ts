@@ -15,6 +15,7 @@ export class TransactionService {
   getAllTransactions(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/Transaction`);
   }
+
   getTransactionsPerPage(pageSize:number,skipNumber:number,sortField:string |string[],sortOrder:number): Observable<any> {  
     //const{first,rows,sortField,sortOrder}=request;
     //const page=(first/rows)+1;
@@ -26,8 +27,13 @@ export class TransactionService {
     }
     
     return this.http.get(this.apiUrl+'/Transaction/page?'+urlParams);   
-   }  
-   getTotalDataCount(): Observable<any> {
+  }
+
+  getTotalDataCount(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/Transaction/count`);
+  }
+  
+  downloadTransactions(): Observable<Blob> {
+    return this.http.get(this.apiUrl+'/Transaction/downloadTransactions', { responseType: 'blob' });
   }
 }

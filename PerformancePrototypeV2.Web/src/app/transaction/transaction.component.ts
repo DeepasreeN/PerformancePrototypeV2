@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { TransactionService } from "./transaction.service";
 import { Transaction } from "../models/transactions";
 import { TableLazyLoadEvent } from "primeng/table";
+import { saveAs } from 'file-saver';
 
 @Component({
     selector:'app-transaction',
@@ -15,9 +16,29 @@ export class TransactionComponent{
     rowsPerPageOptions:number[]=[5,10,15,20];
     loading:boolean=false;
     currentSkipCount :number=0;
+  
 
-    constructor( private transactionservice:TransactionService){
+    constructor(private transactionservice:TransactionService){
     }
+
+  downloadCSV() {
+    this.loading=true;
+    this.transactionservice.downloadTransactions().subscribe({
+      next:(response)=>{
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(response);
+        a.href = objectUrl;
+        a.download = 'data.csv';
+        a.click();
+        URL.revokeObjectURL(objectUrl);  // Clean up
+        this.loading=false;
+      },
+      error:(error)=>{
+        console.error('Error downloading the file', error);
+        this.loading=false;
+      }
+    });
+  }
 
     loadTransactions($event:TableLazyLoadEvent) { 
        // console.log($event);
@@ -34,6 +55,5 @@ export class TransactionComponent{
             this.loading=false;
             }   
         })  
-    } 
-
+    }  
 }
