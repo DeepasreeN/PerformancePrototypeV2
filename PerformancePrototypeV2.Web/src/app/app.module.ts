@@ -11,6 +11,7 @@ import {FooterComponent} from './footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './global/auth.interceptor';
 import { LoginModule } from './login/login.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     FormsModule,
     LoginModule,
+    SharedModule,
     TransactionModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
